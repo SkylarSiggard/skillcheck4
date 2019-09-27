@@ -1,0 +1,15 @@
+.nav {
+    height: 100vh;
+    width: 90px;
+    background: linear-gradient( #ff70a6, #ff9770, #ffd670, #e9ff70);
+}
+.icons {
+    height: 40px;
+    width: 40px;
+    margin: 20px 0 20px 0;
+}
+.upper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

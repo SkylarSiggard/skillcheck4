@@ -27,6 +27,12 @@ class Auth extends Component {
         updateUser(res.data.user)
         swal.fire({type: 'success', text: res.data.message})
     }
+    login = async () => {
+        const {username, password} = this.state
+        const res = await axios.get('/auth/login', {username, password})
+        updateUser(res.data.user)
+        swal.fire({type: 'success', text: res.data.message })
+    }
     render() {
         return(
         <div className='auth'>
@@ -37,7 +43,7 @@ class Auth extends Component {
                 <input onChange={e => this.handleChange(e, 'password')} placeholder='Password' type="text"/> 
                 {/* change type to 'password' */}
                 <div className='log-buttons'>
-                    <button>Login</button>
+                    <Link to='/dashboard'><button onClick={() => this.login()}>Login</button></Link>
                     <Link to='/dashboard'><button onClick={() => this.register()}>Register</button></Link>
                 </div>
             </div>

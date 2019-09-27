@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Nav from '../Nav/Nav'
 
 export default class From extends Component {
     constructor() {
@@ -10,6 +11,7 @@ export default class From extends Component {
     render() {
         return(
         <div className='form'>
+            <Nav/>
             Form
         </div>
         )

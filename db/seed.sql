@@ -12,7 +12,8 @@ CREATE TABLE user_posts (
     user_id INT REFERENCES helo(user_id),
     title VARCHAR(100),
     url_pic TEXT,
-    post_content TEXT
+    post_content TEXT,
+    hash TEXT 
 );
 
 INSERT INTO helo (username, password, profile_pic) 

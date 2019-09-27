@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
 import './auth.css'
 import picture from './winking-512.png'
+import axios from 'axios'
+import swal from 'sweetalert2'
+import {updateUser} from '../../ducks/reducer'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 
-
-export default class Auth extends Component {
+class Auth extends Component {
     constructor() {
         super()
         this.state = {
@@ -17,6 +21,12 @@ export default class Auth extends Component {
             [key]: e.target.value
         })
     }
+    async register() {
+        const {username, password} = this.state
+        const res = await axios.post('/auth/register', {username, password})
+        updateUser(res.data.user)
+        swal.fire({type: 'success', text: res.data.message})
+    }
     render() {
         return(
         <div className='auth'>
@@ -28,10 +38,11 @@ export default class Auth extends Component {
                 {/* change type to 'password' */}
                 <div className='log-buttons'>
                     <button>Login</button>
-                    <button>Register</button>
+                    <Link to='/dashboard'><button onClick={() => this.register()}>Register</button></Link>
                 </div>
             </div>
         </div>
         )
     }
 }
+export default connect()(Auth)

@@ -14,6 +14,7 @@ app.use(session({
     secret: SESSION_SECRET
 }))
 
+app.post('/auth/register', ctrl.register)
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db) 

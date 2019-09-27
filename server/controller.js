@@ -22,6 +22,9 @@ module.exports = {
 
         if (!user[0]) return res.status(200).send({message: 'Username not found'})
 
-        
+        const {username, password, profile_pic} = user[0]
+        req.session.user = {username, password, profile_pic} 
+
+        res.status(200).send({message: 'Loggin in', user: req.session.user, loggedIn: true})
     }
 }
